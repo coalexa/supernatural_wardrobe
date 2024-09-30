@@ -38,4 +38,4 @@ on this app.
 <img src="./screenshots/cru_orders.png" width=70%>
 
 <figcaption>Create/Read/Update/Delete Costume Orders</figcaption>
-<img src="./screenshots/crud_costume_orders.png">
+<img src="./screenshots/crud_costume_orders.png" width=70%>
