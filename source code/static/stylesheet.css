@@ -1,0 +1,194 @@
+/* Font from google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Creepster&family=Signika:wght@300&display=swap');
+
+/*
+Citation for following h1 code:
+Date: 10/27/2022
+Adapted from: CSS Gradient
+Source URL: https://cssgradient.io/blog/css-gradient-text/
+*/
+h1 {
+    font-family: 'Creepster', cursive;
+    font-size: 60px;
+    background: -webkit-linear-gradient(rgb(0, 0, 0), rgb(216, 0, 0));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 0;
+    margin: 0;
+}
+
+/*All work from body to input, textarea, select is our own*/
+body {
+    font-family: 'Signika', sans-serif;
+    border: 2px solid black;
+    background-color: white;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-bottom: 100px;
+    padding-left: 40px; 
+}
+
+p {
+    margin: 0px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+}
+
+p1 {
+    font-size: 20px;
+    line-height: 1.8;
+}
+
+p2 {
+    font-size: 22px;
+    margin: 0px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+}
+
+p3 {
+    font-size: 20px;
+    font-family: 'Creepster', cursive;
+}
+
+a.button {
+    font-family: 'Creepster', cursive;
+    text-decoration: none;
+    background-color: #CCCCCC;
+    color: #333333;
+    margin-top: 10px;
+    padding: 12px 24px;
+    border-radius: 10px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+    font-size: 18px;
+    display: inline-block;
+}
+
+a.button:hover {
+    background-color: rgb(177, 4, 4);
+    color: #ffffff;
+}
+
+table {
+    border:1px solid black;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: auto;
+    text-align: center;
+}
+
+tr {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+th {
+    border: 1px solid black;
+    padding: 10px;
+    max-width: 600px; 
+    word-wrap: break-word;
+}
+
+td {
+    border: 1px solid black;
+    padding: 10px;
+    max-width: 600px; 
+    word-wrap: break-word;
+}
+
+em {
+    font-style: italic;
+}
+
+label {
+    font-weight: bold;
+}
+
+textarea {
+    width: 300px;
+    height: 100px;
+}
+
+input, textarea, select {
+    margin-bottom: 10px;
+}
+
+/*
+Citation for header img code:
+Date: 10/27/2022
+Adapted from: Thought Co
+Source URL: https://www.thoughtco.com/float-image-to-right-of-text-3466409
+*/
+.header img {
+    float: left;
+    clear: both;
+    width: 60px;
+    height: 60px;
+    margin-right: 5px;
+    padding-top: 6px;
+    background: rgb(255, 255, 255);
+}
+
+/*
+Citation for edit table code:
+Date: 11/10/2022
+Adapted from: Stack Overflow
+Source URL: https://stackoverflow.com/questions/40700178/remove-border-and-css-from-last-column-of-the-table
+*/
+.edit-table td:last-child {
+    display: none;
+    border: none;
+}
+
+/*
+Citation for footer code:
+Date: 12/2/2022
+Adapted from: w3schools
+Source URL: https://www.w3schools.com/howto/howto_css_fixed_footer.asp
+*/
+footer {
+    position: relative;
+    left: 0;
+    top: 80px;
+    bottom: 30px;
+    width: 100%;
+    text-align: center;
+    overflow:auto;
+}
+
+/*
+Citation for following fieldset, costumes, themes, and companies code:
+Date: 12/2/2022
+Adapted from: XUL
+Source URL: https://www.xul.fr/en/css/fieldset.php
+*/
+fieldset {
+   background-color:white;
+   border-color: black;
+   max-width:500px;
+   padding:16px;	
+}
+
+.costumes {
+    background-color:white;
+    max-width:868px;
+    padding:16px;
+    border-color: black;
+}
+
+.themes{
+    background-color:white;
+    max-width:380px;
+    padding:16px;
+    border-color: black;
+}
+
+.companies {
+    background-color:white;
+    max-width:515px;
+    padding:16px;
+    border-color: black;
+}

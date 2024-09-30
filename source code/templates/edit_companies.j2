@@ -1,0 +1,70 @@
+<!-- 
+Citation for the following html and jinja2 code:
+Date: 10/27/2022
+Adapted from: GitHub Flask Starter App
+Source URL: https://github.com/osu-cs340-ecampus/flask-starter-app/blob/master/bsg_people_app/templates/edit_people.j2
+-->
+
+<html>
+<head>
+	<title>Edit Companies</title>
+    <link href="../static/stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div>
+        <h1> Edit Company:</h1>
+        <table>
+            <!-- Access data tuple passed from app.py -->
+            {% if data %}
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Phone</th>
+                        <th>Email</th>
+                    </tr>
+
+                <tbody>
+                    <!-- Now, iterate through every item in data -->
+                    {% for item in data %}
+                    <tr>
+                        <!-- Then iterate through every key in the current item dictionary -->
+                        {% for key in item.keys() %}
+
+                        <!-- Create a <td> element with the value of that key in it -->
+                        <td>{{item[key]}}</td> {% endfor %}
+                    </tr>
+                    {% endfor %}
+            {% endif %}
+        </table><br>
+    </div>
+
+    <div id="edit">
+        <!-- form to edit data in companies-->
+        <form id="editCompanies" action="/edit_company/{{data[0].company_id}}" method="post">
+            <fieldset>
+            <legend><strong>Edit Company</strong></legend>
+                <!-- We can preset form inputs to match attributes currently stored for 'id' of company to be updated via value= and accessing our passed data tuple -->
+                <!-- Create hidden form input to store the passed 'id' of the company we are editing so we can access it easily in our 'POST' method in our app.py -->
+                <input type="hidden" value="{{data[0].company_id}}" class="form-control" id="company_id" name="company_id" required>
+
+                <label for="name">Name:</label><br>
+                <input type="text" class="form-control" id="company_name" name="company_name" pattern="[A-Za-z0-9\']{1,}" value="{{data[0].company_name}}" required><br>
+
+                <label for="phone">Phone:</label><br>
+                <input type="text" class="form-control" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" value="{{data[0].phone}}" required><br>
+
+                <label for="email">Email:</label><br>
+                <input type="text" class="form-control" id="email" name="email" pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" value="{{data[0].email}}" required><br>
+                
+                <input type="submit" value="Edit Company" name="Edit_Company" class="btn btn-primary">
+                <a href='/companies'><input class="btn" type="button" value="Cancel"></a>
+            </fieldset>
+        </form>
+    </div>
+
+    <footer><p3> &#169;  2022 Alexa Castro & Carolina Rodriguez</p3></footer>
+
+</body>
+</html>

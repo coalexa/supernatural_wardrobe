@@ -1,0 +1,98 @@
+<!-- 
+Citation for the following html and jinja2 code:
+Date: 10/27/2022
+Adapted from: GitHub Flask Starter App
+Source URL: https://github.com/osu-cs340-ecampus/flask-starter-app/blob/master/bsg_people_app/templates/people.j2
+-->
+
+<html>
+<head>
+    <title>Supernatural Wardrobe</title>
+    <link href="../static/stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="header"> <img src="../static/img/ghostface.png" alt="logo" />
+        <h1>Supernatural Wardrobe</h1>
+    </div>
+    <!-- navigation buttons -->
+    <a href='/' class='button'>Home Page</a>
+    <a href='costumes' class='button'>Costumes</a>
+    <a href='themes' class='button'>Themes</a>
+    <a href='inventory' class='button'>Inventory</a>
+    <a href='companies' class='button'>Companies</a>
+    <a href='orders' class='button'>Orders</a>
+    <a href='costume_orders' class='button'>Costume Orders</a>
+
+    <h2>Orders</h2>
+
+    <h3>Browse Orders</h3>
+	<div id="browse">
+		<table>
+            <!-- Access data tuple passed from app.py --> 
+            {% if data %}
+			    <thead>
+				    <tr>
+					    <!-- Iterate through each key in the first entry to get the column name -->
+                        {% for key in data[0].keys() %}
+					    
+                        <!-- Create a <th> tag with the key inside of it, this will be our header row -->
+					    <th scope="col" data-field="{{ key }}" data-filter-control="input">{{ key }}</th>
+					
+                        <!-- End of this for loop -->
+                        {% endfor %} 
+                        <th>Update Order Status</th>
+                    </tr>
+
+				<tbody>
+					<!-- Now, iterate through every item in data -->
+                    {% for item in data %}
+					    <tr>
+						    <!-- Then iterate through every key in the current item dictionary -->
+                            {% for key in item.keys() %}
+
+						    <!-- Create a <td> element with the value of that key in it -->
+						    <td> {{item[key]}} </td> 
+                            {% endfor %}
+
+                            <!-- Create edit button -->
+						    <td><a href="update_order_status/{{item.ID}}" class="btn btn-default">Update</a></td>
+					    </tr> 
+                    {% endfor %} 
+                {% endif %} 
+        </table><br>   
+	</div>	<!-- browse -->
+
+    <p>
+        <em>An order's status cannot be changed if the order has already been delivered or canceled.</em>
+    </p>
+
+    <div id="insert">
+        <!-- form to insert data into orders -->
+        <form id="startOrder" action="/orders" method="post">
+            <fieldset>
+                <legend><strong>Start An Order</strong></legend>
+                <p>
+                    <em>To add to or edit an order check the costume orders page.</em>
+                </p>
+
+                <label for="company">Company Name:</label><br>
+                <select id="company_id" name="company_id" required>
+                    <!-- Access the companies tuple passed from app.py -->
+                    <option value="0" disabled selected>--select a company--</option>
+                    {% for company in companies %}
+                        <option value={{company.company_id}}>{{company.company_name}}</option>
+                    {% endfor %}
+                </select><br>
+
+                <!-- create 'Add Order' and 'Cancel' buttons -->
+                <input type="submit" value="Add Order" name="Add_Order" class="btn btn-primary">
+                <input class="btn" type="reset" value="Cancel">
+            </fieldset>
+        </form>
+    </div>
+
+    <footer><p3> &#169;  2022 Alexa Castro & Carolina Rodriguez</p3></footer>
+
+</body>
+</html>

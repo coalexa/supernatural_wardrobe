@@ -1,0 +1,113 @@
+<!-- 
+Citation for the following html and jinja2 code:
+Date: 10/27/2022
+Adapted from: GitHub Flask Starter App
+Source URL: https://github.com/osu-cs340-ecampus/flask-starter-app/blob/master/bsg_people_app/templates/people.j2
+-->
+
+<html>
+
+<head>
+    <title>Supernatural Wardrobe</title>
+    <link href="../static/stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="header"> <img src="../static/img/ghostface.png" alt="logo" />
+        <h1>Supernatural Wardrobe</h1>
+    </div>
+    <!-- navigation buttons -->
+    <a href='/' class='button'>Home Page</a>
+    <a href='costumes' class='button'>Costumes</a>
+    <a href='themes' class='button'>Themes</a>
+    <a href='inventory' class='button'>Inventory</a>
+    <a href='companies' class='button'>Companies</a>
+    <a href='orders' class='button'>Orders</a>
+    <a href='costume_orders' class='button'>Costume Orders</a>
+
+    <h2>Costume Orders</h2>
+
+    <h3>Browse Costume Orders</h3>
+	<div id="browse">
+		<table>
+            <!-- Access data tuple passed from app.py --> 
+            {% if data %}
+			    <thead>
+				    <tr>
+					    <!-- Iterate through each key in the first entry to get the column name -->
+                        {% for key in data[0].keys() %}
+					    
+                        <!-- Create a <th> tag with the key inside of it, this will be our header row -->
+					    <th scope="col" data-field="{{ key }}" data-filter-control="input">{{ key }}</th>
+					
+                        <!-- End of this for loop -->
+                        {% endfor %} 
+
+                        <!-- Create edit/delete headers -->
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+
+				<tbody>
+					<!-- Now, iterate through every item in data -->
+                    {% for item in data %}
+					    <tr>
+						    <!-- Then iterate through every key in the current item dictionary -->
+                            {% for key in item.keys() %}
+
+						    <!-- Create a <td> element with the value of that key in it -->
+						    <td> {{item[key]}} </td> 
+                            {% endfor %}
+
+                            <!-- Create edit/delete buttons -->
+						    <td><a href="edit_costume_order/{{item.ID}}" class="btn btn-default">Edit</a></td>
+						    <td><a href="delete_costume_order/{{item.ID}}" class="btn btn-default">Delete</a></td>
+					    </tr> 
+                    {% endfor %} 
+                {% endif %} 
+        </table><br>   
+	</div>	<!-- browse -->
+
+    <p>
+        <em>Note: An order that has been delivered or canceled cannot be changed in any way.</em>
+    </p>
+
+   <div id="insert">
+        <!-- form to insert data into costume orders -->
+        <form id="addCostume" action="/costume_orders" method="post">
+            <fieldset>
+                <legend><strong>Add to an Order</strong></legend>
+
+                <!-- placeholder shows ghost text, required forces an input, pattern forces input adherence -->
+                <label for="order">Order ID:</label><br>
+                <select id="order_id" name="order_id" required>
+                    <!-- Access the orders tuple passed from app.py -->
+                    <option value="0" disabled selected>--select an order ID--</option>
+                    {% for order in orders %}
+                        <option value={{order.order_id}}>{{order.order_id}}</option>
+                    {% endfor %}
+                </select><br>
+
+                <label for="costume_id">Costume:</label><br>
+                <select id="costume_id" name="costume_id" required>
+                    <!-- Access the costumes tuple passed from app.py -->
+                    <option value="0" disabled selected>--select a costume--</option>
+                    {% for costume in costumes %}
+                        <option value={{costume.costume_id}}>{{costume.costume_name}}</option>
+                    {% endfor %}
+                </select><br>
+
+                <label for="qty_ordered">Quantity:</label><br>
+                <input type="number" min="1" class="form-control" id="qty_ordered" name="qty_ordered" pattern="[0-9]{1,}" placeholder="1" required><br>
+
+                <!-- create 'Add Costume' and 'Cancel' buttons -->
+                <input type="submit" value="Add Costume" name="Add_Costume" class="btn btn-primary">
+                <input class="btn" type="reset" value="Cancel">
+            </fieldset>
+        </form>
+    </div>
+
+    <footer><p3> &#169;  2022 Alexa Castro & Carolina Rodriguez</p3></footer>
+
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!-- 
+Citation for the following html and jinja2 code:
+Date: 10/27/2022
+Adapted from: GitHub Flask Starter App
+Source URL: https://github.com/osu-cs340-ecampus/flask-starter-app/blob/master/bsg_people_app/templates/people.j2
+-->
+
+<html>
+<head>
+    <title>Supernatural Wardrobe</title>
+    <link href="../static/stylesheet.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <div class="header"> <img src="../static/img/ghostface.png" alt="logo" />
+        <h1>Supernatural Wardrobe</h1>
+    </div>
+    <!-- navigation buttons -->
+    <a href='/' class='button'>Home Page</a>
+    <a href='costumes' class='button'>Costumes</a>
+    <a href='themes' class='button'>Themes</a>
+    <a href='inventory' class='button'>Inventory</a>
+    <a href='companies' class='button'>Companies</a>
+    <a href='orders' class='button'>Orders</a>
+    <a href='costume_orders' class='button'>Costume Orders</a>
+
+    <h2>Costumes</h2>
+
+    <h3>Browse Costumes</h3>
+	<div id="browse">
+		<table>
+            <!-- Access data tuple passed from app.py --> 
+            {% if data %}
+			    <thead>
+				    <tr>
+					    <!-- Iterate through each key in the first entry to get the column name -->
+                        {% for key in data[0].keys() %}
+					    
+                        <!-- Create a <th> tag with the key inside of it, this will be our header row -->
+					    <th scope="col" data-field="{{ key }}" data-filter-control="input">{{ key }}</th>
+					
+                        <!-- End of this for loop -->
+                        {% endfor %} 
+
+                        <!-- Create edit/delete headers -->
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </tr>
+
+				<tbody>
+					<!-- Now, iterate through every item in data -->
+                    {% for item in data %}
+					    <tr>
+						    <!-- Then iterate through every key in the current item dictionary -->
+                            {% for key in item.keys() %}
+
+						    <!-- Create a <td> element with the value of that key in it -->
+						    <td> {{item[key]}} </td> 
+                            {% endfor %}
+
+                            <!-- Create edit/delete buttons -->
+						    <td><a href="edit_costume/{{item.ID}}" class="btn btn-default">Edit</a></td>
+						    <td><a href="delete_costume/{{item.ID}}" class="btn btn-default">Delete</a></td>
+					    </tr> 
+                    {% endfor %} 
+                {% endif %} 
+        </table><br>   
+	</div>	<!-- browse -->
+    
+    <p>
+        <em>Each unit contains 50 costumes and a costume cannot be deleted if associated with an order.</em>
+    </p>
+
+    <div id="search">
+        <!-- form to search for specific data -->
+        <form id="searchCostumes" action="/search_costumes" method="post">
+            <fieldset class="costumes">
+                <legend><strong>Search Costumes</strong></legend>
+                <p>Partial names are OK</p>
+
+                <label for="costume_name">Search by Costume Name or Theme: </label>
+                <input type="text" name="search_costume" id="search_costume"><br>
+
+                <input type="submit" value="Search" name="Search_Costumes" class="btn btn-primary">
+                <a href='/costumes'><input class="btn" type="button" value="Reset"></a>
+            </fieldset>
+        </form>
+    </div> <!-- search -->
+
+    <div id="insert">
+        <!-- form to insert data into costumes -->
+        <form id="addCostume" action="/costumes" method="post">
+            <fieldset class="costumes">
+            <legend><strong>Add Costume</strong></legend>
+                
+                <!-- placeholder shows ghost text, required forces an input, pattern forces input adherence -->
+                <label for="name">Name:</label><br>
+                <input type="text" class="form-control" id="costume_name" name="costume_name" pattern="[A-Za-z\W+]{1,}" placeholder="Scary Costume" required><br>
+
+                <label for="price">Price Per Unit:</label><br>
+                <input type="text" class="form-control" id="price" name="price" pattern="[0-9]+\.[0-9]{1,}" placeholder="100.00" required><br>
+
+                <label for="description">Costume Description:</label><br>
+                <textarea class="form-control" id="costume_description" name="costume_description" pattern="[A-Za-z0-9\W+]{1,}" placeholder="This is a scary costume" required></textarea><br>
+
+                <label for="theme">Theme:</label><br>
+                <select id="theme_id" name="theme_id" required>
+                    <!-- Access the themes tuple passed from app.py -->
+                    <option value="0" disabled selected>--select a theme--</option>
+                    {% for theme in themes %}
+                        <option value={{theme.theme_id}}>{{theme.theme_description}}</option>
+                    {% endfor %}
+                </select><br>
+                
+                <!-- create 'Add Costume' and 'Cancel' buttons -->
+                <input type="submit" value="Add Costume" name="Add_Costume" class="btn btn-primary">
+                <input class="btn" type="reset" value="Cancel">
+            </fieldset>
+        </form>
+    </div>
+
+    <footer><p3> &#169;  2022 Alexa Castro & Carolina Rodriguez</p3></footer>
+
+</body>
+</html>
