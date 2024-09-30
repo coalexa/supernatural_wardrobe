@@ -6,7 +6,7 @@ Designed and implemented a web app using Python, Flask, and Jinja2 with a MySQL 
 Created Fall 2022 by Alexa Castro and Carolina Rodriguez.
 
 Web-based UI implements a database for a costume warehouse. This contains 5 entities
-costumes, themes, inventory,companies, and orders. An intersection table between costume
+costumes, themes, inventory, companies, and orders. An intersection table between costume
 and orders. CRUD Implemenations such as CREATE/UDPATE/DELETE/SELECT can be performed 
 on this app.
 
