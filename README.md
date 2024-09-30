@@ -1,40 +1,41 @@
-Project 6 Portfolio Assignment - Supernatural Wardrobe
-CS340 – Intro to Databases
+# Supernatural Wardrobe
+
+# Description
 
 Designed and implemented a web app using Python, Flask, and Jinja2 with a MySQL backend
 Created Fall 2022 by Alexa Castro and Carolina Rodriguez.
-
 
 Web-based UI implements a database for a costume warehouse. This contains 5 entities
 costumes, themes, inventory,companies, and orders. An intersection table between costume
 and orders. CRUD Implemenations such as CREATE/UDPATE/DELETE/SELECT can be perfomred 
 on this app.
 
-Built in Flask, Python, and MySQL. 
+## Built with
+- Flask
+- Python
+- MySQL
+- Jinja2
+- CSS
 
+## Screenshots
+<figcaption>Home Page</figcaption>
+<img src="./screenshots/homepage.png">
 
+<figcaption>Create/Read/Update/Delete/Search Costumes Page</figcaption>
+<img src="./screenshots/ruds_costumes.png">
+<img src="./screenshots/create_costume.png" width=51%>
 
+<figcaption>Create/Read/Delete Themes Page</figcaption>
+<img src="./screenshots/crd_themes.png" width=51%>
 
-RUN Program:
+<figcaption>Create/Read/Update/Delete/Search Inventory Page</figcaption>
+<img src="./screenshots/cruds_inventory.png" width=51%>
 
-pip3 install --user virtualenv
-python3 -m venv .
-source ./bin/activate
-pip3 install flask-mysqldb
-pip3 install gunicorn
+<figcaption>Create/Read/Update/Search Companies Page</figcaption>
+<img src="./screenshots/crus_companies.png" width=51%>
 
-Dependencies:
-click==8.0.4
-dataclasses==0.8
-Flask==2.0.3
-Flask-MySQLdb==1.0.1
-gunicorn==20.1.0
-importlib-metadata==4.8.3
-itsdangerous==2.0.1
-Jinja2==3.0.3
-MarkupSafe==2.0.1
-mysqlclient==2.1.1
-python-dotenv==0.20.0
-typing-extensions==4.1.1
-Werkzeug==2.0.3
-zipp==3.6.0
+<figcaption>Create/Read/Update Orders Page</figcaption>
+<img src="./screenshots/cru_orders.png" width=51%>
+
+<figcaption>Create/Read/Update/Delete Costume Orders</figcaption>
+<img src="./screenshots/crud_costume_orders.png" width=51%>
