@@ -23,19 +23,19 @@ on this app.
 
 <figcaption>Create/Read/Update/Delete/Search Costumes Page</figcaption>
 <img src="./screenshots/ruds_costumes.png">
-<img src="./screenshots/create_costume.png" width=51%>
+<img src="./screenshots/create_costume.png">
 
 <figcaption>Create/Read/Delete Themes Page</figcaption>
-<img src="./screenshots/crd_themes.png" width=51%>
+<img src="./screenshots/crd_themes.png">
 
 <figcaption>Create/Read/Update/Delete/Search Inventory Page</figcaption>
-<img src="./screenshots/cruds_inventory.png" width=51%>
+<img src="./screenshots/cruds_inventory.png">
 
 <figcaption>Create/Read/Update/Search Companies Page</figcaption>
-<img src="./screenshots/crus_companies.png" width=51%>
+<img src="./screenshots/crus_companies.png">
 
 <figcaption>Create/Read/Update Orders Page</figcaption>
-<img src="./screenshots/cru_orders.png" width=51%>
+<img src="./screenshots/cru_orders.png">
 
 <figcaption>Create/Read/Update/Delete Costume Orders</figcaption>
-<img src="./screenshots/crud_costume_orders.png" width=51%>
+<img src="./screenshots/crud_costume_orders.png">
